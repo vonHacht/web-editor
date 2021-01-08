@@ -99,4 +99,6 @@ debug.xml
 .DS_Store
 widgets/
 
-
+# IDE
+.idea
+.vscode
