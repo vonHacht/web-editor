@@ -35,14 +35,14 @@ from tornado.concurrent import run_on_executor
 from tornado.escape import json_encode
 from tornado.log import enable_pretty_logging
 
-from .web.handlers.page import (
+from web.handlers.page import (
     BaseHandler, DeviceConnectHandler,
     DeviceHierarchyHandler, DeviceHierarchyHandlerV2, DeviceScreenshotHandler,
     DeviceWidgetListHandler, MainHandler, VersionHandler, WidgetPreviewHandler)
-from .web.handlers.proxy import StaticProxyHandler
-from .web.handlers.shell import PythonShellHandler
-from .web.utils import current_ip, tostr
-from .web.version import __version__
+from web.handlers.proxy import StaticProxyHandler
+from web.handlers.shell import PythonShellHandler
+from web.utils import current_ip, tostr
+from web.version import __version__
 
 enable_pretty_logging()
 
@@ -145,7 +145,7 @@ def cmd_quit(port=17310):
             logger.warning("Pidfile: %s not exist", PID_FILEPATH)
             return
         
-        with open(PIDFILEPATH, "r") as f:
+        with open(PID_FILEPATH, "r") as f:
             pid = int(f.read())
             if os.name == "nt": # windows
                 subprocess.call(f"taskkill /PID {pid} /T /F") # /F: 强制 /T: 包含子进程
